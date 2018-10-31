@@ -1,10 +1,10 @@
-package mycalculator.utility;
+package mycalculator.config;
 
-import mycalculator.function.ClearAction;
-import mycalculator.function.MemoryAction;
-import mycalculator.function.NumberAction;
-import mycalculator.function.OperatorAction;
-import mycalculator.function.TransformAction;
+import mycalculator.key.ClearKey;
+import mycalculator.key.MemoryKey;
+import mycalculator.key.NumberKey;
+import mycalculator.key.OperatorKey;
+import mycalculator.key.TransformKey;
 
 public class Register {
 	public String memoryInfo;
@@ -35,15 +35,15 @@ public class Register {
 
 	public Register allocate(Register register, int functionId, int status){
 		switch(functionId){
-		case 0: register = (new ClearAction(register)).register;
+		case 0: register = (new ClearKey()).function.allocate(register, status);
 		break;
-		case 1:	register = (new NumberAction(register,status)).register;
+		case 1:	register = (new NumberKey()).function.allocate(register, status);
 		break;
-		case 2:	register = (new OperatorAction(register,status)).register;
+		case 2:	register = (new OperatorKey()).function.allocate(register, status);
 		break;
-		case 3:	register = (new TransformAction(register,status)).register;
+		case 3:	register = (new TransformKey()).function.allocate(register, status);
 		break;
-		case 4:	register = (new MemoryAction(register,status)).register;
+		case 4:	register = (new MemoryKey()).function.allocate(register, status);
 		break;
 		}
 		return register;

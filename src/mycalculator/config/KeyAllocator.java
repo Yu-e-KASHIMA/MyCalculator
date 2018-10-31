@@ -1,36 +1,15 @@
 package mycalculator.config;
 
 import mycalculator.key.ClearKey;
-import mycalculator.key.DivisionKey;
-import mycalculator.key.DotKey;
-import mycalculator.key.EightKey;
-import mycalculator.key.EqualKey;
-import mycalculator.key.FiveKey;
-import mycalculator.key.FourKey;
-import mycalculator.key.MemoryClearKey;
-import mycalculator.key.MemoryRecallKey;
-import mycalculator.key.MemorySaveKey;
-import mycalculator.key.MinusKey;
-import mycalculator.key.MultiplicationKey;
-import mycalculator.key.NineKey;
-import mycalculator.key.OneKey;
-import mycalculator.key.PercentKey;
-import mycalculator.key.PlusKey;
-import mycalculator.key.SevenKey;
-import mycalculator.key.SignInversionKey;
-import mycalculator.key.SixKey;
-import mycalculator.key.SquareRootKey;
-import mycalculator.key.ThreeKey;
-import mycalculator.key.TwoKey;
-import mycalculator.key.WithRemainderKey;
-import mycalculator.key.ZeroKey;
+import mycalculator.key.MemoryKey;
+import mycalculator.key.NumberKey;
+import mycalculator.key.OperatorKey;
+import mycalculator.key.TransformKey;
 
 public class KeyAllocator {
 	public String label;
 	public int functionId;
 	public int status;
-
-	public KeyAllocator() {}
 
 	public KeyAllocator(String label, int functionId, int status) {
 		this.label = label;
@@ -38,57 +17,60 @@ public class KeyAllocator {
 		this.status = status;
 	}
 
-	public void allocate(short keyId) {
-
+	public KeyAllocator(int keyId) {
+		KeyAllocator result = null;
 		switch(keyId){
-		case 0: new MemoryClearKey(this);
+		case 0: result = (new MemoryKey()).label.allocate(2);
 				break;
-		case 1: new MemoryRecallKey(this);
+		case 1: result = (new MemoryKey()).label.allocate(1);
 				break;
-		case 2: new MemorySaveKey(this);
+		case 2: result = (new MemoryKey()).label.allocate(0);
 				break;
-		case 3: new ClearKey(this);
+		case 3: result = (new ClearKey()).label.allocate(0);
 				break;
-		case 4: new SquareRootKey(this);
+		case 4: result = (new TransformKey()).label.allocate(2);
 				break;
-		case 5: new PercentKey(this);
+		case 5: result = (new TransformKey()).label.allocate(1);
 				break;
-		case 6: new SignInversionKey(this);
+		case 6: result = (new TransformKey()).label.allocate(0);
 				break;
-		case 7: new WithRemainderKey(this);
+		case 7: result = (new OperatorKey()).label.allocate(5);
 				break;
-		case 8: new SevenKey(this);
+		case 8: result = (new NumberKey()).label.allocate(7);
 				break;
-		case 9: new EightKey(this);
+		case 9: result = (new NumberKey()).label.allocate(8);
 				break;
-		case 10: new NineKey(this);
+		case 10: result = (new NumberKey()).label.allocate(9);
 				break;
-		case 11: new DivisionKey(this);
+		case 11: result = (new OperatorKey()).label.allocate(4);
 				break;
-		case 12: new FourKey(this);
+		case 12: result = (new NumberKey()).label.allocate(4);
 				break;
-		case 13: new FiveKey(this);
+		case 13: result = (new NumberKey()).label.allocate(5);
 				break;
-		case 14: new SixKey(this);
+		case 14: result = (new NumberKey()).label.allocate(6);
 				break;
-		case 15: new MultiplicationKey(this);
+		case 15: result = (new OperatorKey()).label.allocate(3);
 				break;
-		case 16: new OneKey(this);
+		case 16: result = (new NumberKey()).label.allocate(1);
 				break;
-		case 17: new TwoKey(this);
+		case 17: result = (new NumberKey()).label.allocate(2);
 				break;
-		case 18: new ThreeKey(this);
+		case 18: result = (new NumberKey()).label.allocate(3);
 				break;
-		case 19: new MinusKey(this);
+		case 19: result = (new OperatorKey()).label.allocate(2);
 				break;
-		case 20: new ZeroKey(this);
+		case 20: result = (new NumberKey()).label.allocate(0);
 				break;
-		case 21: new DotKey(this);
+		case 21: result = (new NumberKey()).label.allocate(10);
 				break;
-		case 22: new EqualKey(this);
+		case 22: result = (new OperatorKey()).label.allocate(0);
 				break;
-		case 23: new PlusKey(this);
+		case 23: result = (new OperatorKey()).label.allocate(1);
 				break;
 		}
+		this.label = result.label;
+		this.functionId = result.functionId;
+		this.status = result.status;
 	}
 }

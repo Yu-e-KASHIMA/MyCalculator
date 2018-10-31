@@ -1,6 +1,6 @@
 package mycalculator.key;
 
-import mycalculator.utility.Register;
+import mycalculator.config.Register;
 
 public interface KeyFunction {
 	public Register allocate(Register register, int status);

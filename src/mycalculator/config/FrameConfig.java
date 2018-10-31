@@ -12,8 +12,8 @@ public class FrameConfig extends JFrame {
 		ImageIcon icon = new ImageIcon("./img/icon_105830_128.png");
 		setIconImage(icon.getImage());
 
-		int appWidth = 600;
-		int appHeight = 800;
+		int appWidth = 300;
+		int appHeight = 400;
 		setSize(appWidth, appHeight);
 		setLocationRelativeTo(null);
 		setResizable(false);

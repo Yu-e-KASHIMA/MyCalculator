@@ -1,15 +1,9 @@
 package mycalculator.key;
 
 import mycalculator.config.KeyAllocator;
-import mycalculator.utility.Register;
+import mycalculator.config.Register;
 
 public class ClearKey {
-	public ClearKey(KeyAllocator allocator) {
-		allocator.label = "CLR";
-		allocator.functionId = 0;
-		allocator.status = 0;
-	}
-
 	public KeyLabel label = (clr) -> { return new KeyAllocator("CLR", 0, clr); };
 
 	public KeyFunction function = (register, clr) -> {
