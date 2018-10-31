@@ -1,13 +1,27 @@
 package mycalculator.key;
 
-import mycalculator.utility.KeyAllocator;
+import mycalculator.config.KeyAllocator;
+import mycalculator.utility.Register;
 
 public class ClearKey {
-
 	public ClearKey(KeyAllocator allocator) {
 		allocator.label = "CLR";
 		allocator.functionId = 0;
 		allocator.status = 0;
 	}
 
+	public KeyLabel label = (clr) -> { return new KeyAllocator("CLR", 0, clr); };
+
+	public KeyFunction function = (register, clr) -> {
+		if(register.regB.isEmpty() || register.regB == "0"){
+			double memoryBackup = register.memory;
+			register = new Register();
+			register.memory = memoryBackup;
+		}else{
+			register.regB = "0";
+			register.isZero = true;
+			register.dotUsed = false;
+		}
+		return register;
+	};
 }

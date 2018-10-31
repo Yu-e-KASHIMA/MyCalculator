@@ -1,7 +1,12 @@
 package mycalculator.utility;
 
-public class Register {
+import mycalculator.function.ClearAction;
+import mycalculator.function.MemoryAction;
+import mycalculator.function.NumberAction;
+import mycalculator.function.OperatorAction;
+import mycalculator.function.TransformAction;
 
+public class Register {
 	public String memoryInfo;
 	public String calculationInfo;
 	public String remainderInfo;
@@ -28,4 +33,19 @@ public class Register {
 		dotUsed = false;
 	}
 
+	public Register allocate(Register register, int functionId, int status){
+		switch(functionId){
+		case 0: register = (new ClearAction(register)).register;
+		break;
+		case 1:	register = (new NumberAction(register,status)).register;
+		break;
+		case 2:	register = (new OperatorAction(register,status)).register;
+		break;
+		case 3:	register = (new TransformAction(register,status)).register;
+		break;
+		case 4:	register = (new MemoryAction(register,status)).register;
+		break;
+		}
+		return register;
+	}
 }

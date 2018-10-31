@@ -24,89 +24,71 @@ import mycalculator.key.ThreeKey;
 import mycalculator.key.TwoKey;
 import mycalculator.key.WithRemainderKey;
 import mycalculator.key.ZeroKey;
-import mycalculator.utility.KeyAllocator;
 
-public class KeyAllocation {
+public class KeyAllocator {
+	public String label;
+	public int functionId;
+	public int status;
 
-	KeyAllocator allocator = new KeyAllocator();
+	public KeyAllocator() {}
+
+	public KeyAllocator(String label, int functionId, int status) {
+		this.label = label;
+		this.functionId = functionId;
+		this.status = status;
+	}
 
 	public void allocate(short keyId) {
 
 		switch(keyId){
-		case 0: new MemoryClearKey(allocator);
+		case 0: new MemoryClearKey(this);
 				break;
-
-		case 1: new MemoryRecallKey(allocator);
+		case 1: new MemoryRecallKey(this);
 				break;
-
-		case 2: new MemorySaveKey(allocator);
+		case 2: new MemorySaveKey(this);
 				break;
-
-		case 3: new ClearKey(allocator);
+		case 3: new ClearKey(this);
 				break;
-
-		case 4: new SquareRootKey(allocator);
+		case 4: new SquareRootKey(this);
 				break;
-
-		case 5: new PercentKey(allocator);
+		case 5: new PercentKey(this);
 				break;
-
-		case 6: new SignInversionKey(allocator);
+		case 6: new SignInversionKey(this);
 				break;
-
-		case 7: new WithRemainderKey(allocator);
+		case 7: new WithRemainderKey(this);
 				break;
-
-		case 8: new SevenKey(allocator);
+		case 8: new SevenKey(this);
 				break;
-
-		case 9: new EightKey(allocator);
+		case 9: new EightKey(this);
 				break;
-
-		case 10: new NineKey(allocator);
+		case 10: new NineKey(this);
 				break;
-
-		case 11: new DivisionKey(allocator);
+		case 11: new DivisionKey(this);
 				break;
-
-		case 12: new FourKey(allocator);
+		case 12: new FourKey(this);
 				break;
-
-		case 13: new FiveKey(allocator);
+		case 13: new FiveKey(this);
 				break;
-
-		case 14: new SixKey(allocator);
+		case 14: new SixKey(this);
 				break;
-
-		case 15: new MultiplicationKey(allocator);
+		case 15: new MultiplicationKey(this);
 				break;
-
-		case 16: new OneKey(allocator);
+		case 16: new OneKey(this);
 				break;
-
-		case 17: new TwoKey(allocator);
+		case 17: new TwoKey(this);
 				break;
-
-		case 18: new ThreeKey(allocator);
+		case 18: new ThreeKey(this);
 				break;
-
-		case 19: new MinusKey(allocator);
+		case 19: new MinusKey(this);
 				break;
-
-		case 20: new ZeroKey(allocator);
+		case 20: new ZeroKey(this);
 				break;
-
-		case 21: new DotKey(allocator);
+		case 21: new DotKey(this);
 				break;
-
-		case 22: new EqualKey(allocator);
+		case 22: new EqualKey(this);
 				break;
-
-		case 23: new PlusKey(allocator);
+		case 23: new PlusKey(this);
 				break;
-
 		}
-
 	}
-
 }

@@ -3,8 +3,6 @@ package mycalculator.config;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -48,16 +46,13 @@ public class ContentLayout extends JPanel {
 
 		for(short keyId = 0; keyId < 24; keyId ++){
 
-			KeyAllocation key = new KeyAllocation();
+			KeyAllocator key = new KeyAllocator();
 			key.allocate(keyId);
 
-			JButton button = new JButton(key.allocator.label);
-			button.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					register = function.allocate(register, key.allocator.functionId, key.allocator.status);
-					viewRegenerate(register);
-				}
+			JButton button = new JButton(key.label);
+			button.addActionListener((e) -> {
+				register = function.allocate(register, key.functionId, key.status);
+				viewRegenerate(register);
 			});
 			keyboard.add(button);
 

@@ -1,6 +1,6 @@
 package mycalculator.key;
 
-import mycalculator.utility.KeyAllocator;
+import mycalculator.config.KeyAllocator;
 
 public class EqualKey {
 
